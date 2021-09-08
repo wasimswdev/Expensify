@@ -32,7 +32,7 @@ ReactDOM.render(<p>Loading...</p> , document.getElementById('root'));
 onAuthStateChanged(getAuth(), (user) => {
     if (user) {
         store.dispatch(login(user.uid))
-        store.dispatch(startSetExpense()).then(() => {
+        store.dispatch(startSetExpense(user.uid)).then(() => {
         renderApp();
         if (history.location.pathname === '/') {
             history.push('/dashboard');
