@@ -1,18 +1,17 @@
 
 export const setTextFilter = (text = '') => ({
-    type: 'set_text',
+    type: 'SET_TEXT',
     text   //keep text as an object
   
   })
   
 export const sortByAmount = () => ({
-type:'sort_by_amount'
+type:'SORT_BY_AMOUNT'
 })
 
 export const sortByDate = () => ({
-type:'sort_by_date'
+type:'SORT_BY_DATE'
 })
-
 
 export const setStartDate = (startDate) => ({
 type: 'setStartDate',

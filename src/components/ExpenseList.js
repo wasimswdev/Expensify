@@ -6,15 +6,13 @@ import ExpenseListItem from './ExpenseListItem';
 
 const ExpenseList = ({ expenses }) => (
         <div>
-            <h1>Expense List</h1>
+            {!expenses.length &&<p>no expenses</p>}
             {expenses.map((expense) =>(
                 <ExpenseListItem key={expense.id} {...expense} />
             ))}
         </div>
     )
-
-
-
+            
 
 const mapStateToProps = (state) => {     //state is passed as a prop to the component connected. rerun everytime state changes
     // const expenses = JSON.parse(localStorage.getItem('expenses'))
@@ -22,7 +20,6 @@ const mapStateToProps = (state) => {     //state is passed as a prop to the comp
     // console.log(expenses)
 
     const {expenses ,filters} = state
-
     return {
         expenses: getVisibleExpenses(expenses, filters)  //filtered and sorted expense is passed
     }

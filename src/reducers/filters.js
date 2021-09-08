@@ -10,19 +10,19 @@ const filterInitialState = {
 //Filter Reducer function
 export default (state=filterInitialState, action) => {
     switch(action.type){
-      case 'set_text':
+      case 'SET_TEXT':
         return {
           ...state,
           text: action.text  //overwriting only text property value
         }
   
-      case 'sort_by_amount':
+      case 'SORT_BY_AMOUNT':
         return {
           ...state,
           sortBy: 'amount'
         }
   
-      case 'sort_by_date':
+      case 'SORT_BY_DATE':
         return {
           ...state,
           sortBy: 'date'

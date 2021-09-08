@@ -1,28 +1,30 @@
 import React from 'react';
-import { Switch, BrowserRouter, Route } from 'react-router-dom';
+import { Switch, Router, Route } from 'react-router-dom';
 import ExpenseDashboard from '../components/ExpenseDashboard';
 import CreateExpense from '../components/CreateExpense';
 import EditExpense from '../components/EditExpense';
 import HelpPage from '../components/HelpPage';
 import NotFoundPage from '../components/NotFoundPage';
-import Header from '../components/Header';
+import LoginPage from '../components/LoginPage';
+import history from '../components/history';
+import PrivateRoute from './PrivateRoute';
 
-
+ 
 const AppRouter = () => (
-    <BrowserRouter>
+    <Router history={history}>
       <div>
-        <Header />
         <Switch>
-        {/*route takes path and component props and other props*/}
-        <Route path="/"  exact={true} component={ExpenseDashboard}/> 
-        <Route path="/edit/:id"  component={EditExpense}/>
-        <Route path="/help" component={HelpPage} />
-        <Route path="/create" component={CreateExpense}/>
-        {/* the not found route should be defined last, so switch checks the valid paths before 404! */}
-        <Route component={NotFoundPage} />
-      </Switch>
+          {/*route takes path and component props and other props*/}
+          <Route path="/" component={LoginPage}  exact={true}/> 
+          <PrivateRoute path="/dashboard" component={ExpenseDashboard}/> 
+          <PrivateRoute path="/edit/:id"  component={EditExpense}/>
+          <PrivateRoute path="/create" component={CreateExpense}/>
+          <Route path="/help" component={HelpPage} />
+          {/* the not found route should be defined last, so switch checks the valid paths before 404! */}
+          <Route component={NotFoundPage} />
+        </Switch>
       </div>
-    </BrowserRouter>
+    </Router>
   )
 
 export default AppRouter

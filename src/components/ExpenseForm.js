@@ -2,16 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 
-
-
-
 const ExpenseForm = (props) => {
+
   const [description, setDescription] = useState(props.expense ? props.expense.description : '')
   const [amount, setAmount] = useState(props.expense? String(props.expense.amount) : '') 
   const [note, setNote] = useState(props.expense? props.expense.note : '') 
-  const [date, setDate] = useState(new Date()) //props.expense ? props.expense.createdAt 
+  const [date, setDate] = useState(props.expense? new Date(props.expense.createdAt).toISOString().slice(0,10): '')  
   const [error, setError] = useState(undefined)
-  const [focused, setFocused] = useState(false)
 
 
   const handleChangeDescription = (e) => {
@@ -48,7 +45,7 @@ const ExpenseForm = (props) => {
       setError(false)
       props.onSubmit({
         description,
-        amount:Number(amount),
+        amount:parseFloat(amount),
         note,
         createdAt: date
       })
@@ -66,7 +63,7 @@ const ExpenseForm = (props) => {
       <form onSubmit={onSubmit}>
         Description: <input type="text" value={description} onChange={handleChangeDescription} autoFocus /><br />
         Amount: <input type="text" value={amount} onChange={handleChangeAmount} />
-        createdAt: <input type="date" onChange={handleChangeDate} required pattern="\d{4}-\d{2}-\d{2}" />
+        createdAt: <input type="date" onChange={handleChangeDate} value = {date} required/>
         Note: <textarea name="notes" value={note} onChange={handleChangeNote} rows="4" cols="50" placeholder="Enter text here..."></textarea><br />
         <input type="submit" />
       </form>

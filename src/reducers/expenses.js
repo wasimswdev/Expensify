@@ -7,15 +7,15 @@ export default (state=expenseInitialState, action) => {
     switch(action.type){
   
       //ADD EXPENSE
-      case 'add_expense':
+      case 'ADD_EXPENSE':
         return [...state, action.expense];
   
       //REMOVE EXPENSE
-      case 'remove_expense':
+      case 'REMOVE_EXPENSE':
         return state.filter(({ id }) => id !== action.id)  //destructuring id from expense object
       
       //EDIT EXPENSE
-      case 'edit_expense':
+      case 'EDIT_EXPENSE':
         return state.map((expense) => {
           if(expense.id === action.id){  //only process if ID matches to existing object
             return {
@@ -26,6 +26,10 @@ export default (state=expenseInitialState, action) => {
               return expense
           }
         })
+
+      //SET EXPENSE
+      case 'SET_EXPENSE':
+        return action.expenses
       
       default:
         return state
