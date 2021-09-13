@@ -1,9 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { setTextFilter, sortByAmount, sortByDate, setStartDate, setEndDate } from '../actions/filters'
-
-
-
 
 //1.value attribute in input text type defines the initial value of the input
 //2.e.target.value is a separate built-in method and it is not related to the value attribute of the input element
@@ -11,7 +8,9 @@ import { setTextFilter, sortByAmount, sortByDate, setStartDate, setEndDate } fro
 //4.this updates the state in the redux store
 const ExpenseListFilter = (props) => {
 
-    // const startDateValue = new Date()
+    const startDateValue = props.filters.startDate? new Date(props.filters.startDate).toISOString().slice(0,10) : undefined
+    const endDateValue =  props.filters.endDate? new Date(props.filters.endDate).toISOString().slice(0,10) : undefined
+
     const handleFilterText = (e) => {
         props.dispatch(setTextFilter(e.target.value))
     }
@@ -42,9 +41,9 @@ const ExpenseListFilter = (props) => {
                     <option value="amount">Amount</option>
                 </select>
                 <div className="filter__dates">
-                    <input className="filters__startDate" type="date" onChange={handleStartDate} placeholder="Start date" required pattern="\d{4}-\d{2}-\d{2}" />
+                    <input className="filters__startDate" type="date" value = {startDateValue} onChange={handleStartDate} required pattern="\d{4}-\d{2}-\d{2}" />
                     <span className="filters__arrow">&rarr;</span>
-                    <input className="filters__endDate" type="date" onChange={handleEndDate} required pattern="\d{4}-\d{2}-\d{2}"/>
+                    <input className="filters__endDate" type="date" value={endDateValue} onChange={handleEndDate} required pattern="\d{4}-\d{2}-\d{2}"/>
                 </div>
             </div>
         </div>

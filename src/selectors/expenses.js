@@ -1,5 +1,5 @@
 //filtering expense
-export default (expenses, { text, sortBy, startDate, endDate }) => {
+const getVisibleExpenses = (expenses, { text, sortBy, startDate, endDate }) => {
     return expenses.filter((expense) => {
   
       //If no startdate provided it will return true to ignore start date in filtering, 
@@ -19,3 +19,4 @@ export default (expenses, { text, sortBy, startDate, endDate }) => {
 }) 
   }
 
+export default getVisibleExpenses

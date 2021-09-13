@@ -6,7 +6,7 @@ import ExpenseForm from './ExpenseForm';
 const EditExpense = (props) => {
   return (
     <div>
-      <div class="page-header">
+      <div className="page-header">
         <div className="content-container">
           <h1 className="expense-header__head">Edit Expense</h1>
         </div>

@@ -9,7 +9,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 
 //Redux store
-export default () => {
+const reduxStore =  () => {
     const store = createStore(
         combineReducers({
           expenses: expenseReducer,
@@ -20,3 +20,5 @@ export default () => {
         )
     return store
 }
+
+export default reduxStore

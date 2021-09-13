@@ -1,4 +1,4 @@
-export default (state = {}, action) => {
+const getAuth = (state = {}, action) => {
     switch(action.type){
         case 'LOGIN':
             return {
@@ -12,3 +12,5 @@ export default (state = {}, action) => {
             return state
     }
 }
+
+export default getAuth

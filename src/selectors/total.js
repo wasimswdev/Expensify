@@ -1,4 +1,4 @@
-export default (expenses) => {
+const totalExpenses = (expenses) => {
     const data = {
       sum : 0,
       total: expenses.length
@@ -9,3 +9,8 @@ export default (expenses) => {
   
     return data
   }
+
+
+export default totalExpenses
+  
+  
