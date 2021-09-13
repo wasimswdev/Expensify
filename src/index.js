@@ -8,6 +8,7 @@ import { startSetExpense } from './actions/expenses';
 import { getAuth,  onAuthStateChanged } from 'firebase/auth';
 import history from './components/history';
 import { login, logout } from './actions/auth';
+import logo from './images/loader.gif';
 
 
 //store
@@ -27,7 +28,7 @@ if (!hasRendered) {
 }
 }
 
-ReactDOM.render(<p>Loading...</p> , document.getElementById('root'));
+ReactDOM.render(<img className="loader" src={logo} alt="loading..."></img> , document.getElementById('root'));
 
 onAuthStateChanged(getAuth(), (user) => {
     if (user) {
