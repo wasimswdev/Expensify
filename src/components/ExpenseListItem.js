@@ -8,18 +8,22 @@ function ExpenseListItem({ dispatch, id, description, amount, createdAt }) {
 
     const d = new Date(createdAt)
     let ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d);
-    let mo = new Intl.DateTimeFormat('en', { month: 'short' }).format(d);
+    let mo = new Intl.DateTimeFormat('en', { month: 'long' }).format(d);
     let da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(d);
 
-    
     return (
-        <div>
-            <Link to={`/edit/${id}`}> <h3>{description}</h3></Link>
-            <p>amount: {`₹ ${numeral(amount).format('0,0.00')}`}</p>
-            <p>created: {`${da}-${mo}-${ye}`}</p>
+        <div className="list-body">
+        <Link className="list-item" to={`/edit/${id}`}>
+            <div className="list-expense-container">
+                 <h3>{description}</h3>
+                <p className="list-item__created">{`${mo} ${da}, ${ye}`}</p>
+            </div>
+            <h3>{`₹ ${numeral(amount).format('0,0.00')}`}</h3>
+        </Link>
         </div>
     )
 }
 
 
 export default connect()(ExpenseListItem)
+//<Link className="list__description" to={`/edit/${id}`}>

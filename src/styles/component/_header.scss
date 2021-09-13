@@ -1,0 +1,55 @@
+.header{
+    background-color: #364051;
+    color: #fff;
+
+}
+
+.content-container{
+    margin:0 auto;
+    padding: 0 1.2rem;
+    max-width: 80rem;
+}
+
+.header-heading-content{
+    display: flex;
+    justify-content: space-between;
+    padding:1rem 0;
+
+    &__heading{
+        text-decoration: none;
+        color:#fff;
+
+    }
+
+    &__logout{
+        border:none;
+        text-decoration: none;
+        background:none;
+        font-size: 1.8rem;
+        color:#fff;
+    }
+}
+
+
+
+.header-info{
+    background-color: #F7F7F7;
+    padding: 3rem 0 3.5rem 0;
+    margin-bottom:2.8rem;
+
+
+    &__para{
+        font-size: 3.2rem;
+        margin-bottom: 1.7rem;
+    }
+
+
+    &__add{
+        text-decoration: none;
+        color:#fff;
+        background-color: #1C88BF;
+        padding:1.2rem;
+        font-weight: 400;
+
+    }
+}

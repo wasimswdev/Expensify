@@ -5,11 +5,17 @@ import ExpenseListItem from './ExpenseListItem';
 
 
 const ExpenseList = ({ expenses }) => (
-        <div>
-            {!expenses.length &&<p>no expenses</p>}
-            {expenses.map((expense) =>(
-                <ExpenseListItem key={expense.id} {...expense} />
-            ))}
+        <div className="content-container">
+            <div className="list-container">
+                <div className="list-header">
+                    <span>Expense</span>
+                    <span>Amount</span>
+                </div>
+                {!expenses.length &&<p className="list-no-expenses">no expenses</p>}
+                {expenses.map((expense) =>(
+                    <ExpenseListItem key={expense.id} {...expense} />
+                ))}
+            </div>
         </div>
     )
             

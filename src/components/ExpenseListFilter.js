@@ -10,6 +10,8 @@ import { setTextFilter, sortByAmount, sortByDate, setStartDate, setEndDate } fro
 //3.if any input changes then function "handleFilterText" runs setting filter text to the input given by user
 //4.this updates the state in the redux store
 const ExpenseListFilter = (props) => {
+
+    // const startDateValue = new Date()
     const handleFilterText = (e) => {
         props.dispatch(setTextFilter(e.target.value))
     }
@@ -30,19 +32,21 @@ const ExpenseListFilter = (props) => {
         props.dispatch(setEndDate(e.target.value))
     }
 
-    useEffect(() =>{
-        localStorage.setItem('filters', JSON.stringify(props.filters))
-    },[props.filters])
     
     return (
-        <div>
-            <input type="text" value={props.filters.text} placeholder="search for expenses" onChange={handleFilterText}/> 
-            <select value= {props.filters.sortBy} onChange={handleSortBy}>
-                <option value="date">Date</option>
-                <option value="amount">Amount</option>
-            </select>
-            <input type="date" onChange={handleStartDate} required pattern="\d{4}-\d{2}-\d{2}" /> {/* */}
-            <input type="date" onChange={handleEndDate} required pattern="\d{4}-\d{2}-\d{2}"/>
+        <div className="content-container">
+            <div className="filters">
+                <input className="filters__search" type="text" value={props.filters.text} placeholder="Search expenses" onChange={handleFilterText}/> 
+                <select className="filters__select" value= {props.filters.sortBy} onChange={handleSortBy}>
+                    <option value="date">Date</option>
+                    <option value="amount">Amount</option>
+                </select>
+                <div className="filter__dates">
+                    <input className="filters__startDate" type="date" onChange={handleStartDate} placeholder="Start date" required pattern="\d{4}-\d{2}-\d{2}" />
+                    <span className="filters__arrow">&rarr;</span>
+                    <input className="filters__endDate" type="date" onChange={handleEndDate} required pattern="\d{4}-\d{2}-\d{2}"/>
+                </div>
+            </div>
         </div>
     )
 }

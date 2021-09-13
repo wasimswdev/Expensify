@@ -52,23 +52,20 @@ const ExpenseForm = (props) => {
     } 
   }
 
-
-  useEffect(() => {
-      localStorage.setItem('expenses', JSON.stringify(props.expenses))
-  }, [props.expenses])
-
   return(
-    <div>
+    <div className="content-container">
       {error && <p>Please provide valid description and amount</p>}
-      <form onSubmit={onSubmit}>
-        Description: <input type="text" value={description} onChange={handleChangeDescription} autoFocus /><br />
-        Amount: <input type="text" value={amount} onChange={handleChangeAmount} />
-        createdAt: <input type="date" onChange={handleChangeDate} value = {date} required/>
-        Note: <textarea name="notes" value={note} onChange={handleChangeNote} rows="4" cols="50" placeholder="Enter text here..."></textarea><br />
-        <input type="submit" />
+      <form className="form" onSubmit={onSubmit}>
+        <input className="form__description" type="text" value={description} onChange={handleChangeDescription} placeholder="Description" autoFocus />
+        <input className="form__amount" type="text" value={amount} onChange={handleChangeAmount} placeholder=" Amount"/>
+        <input className="form__created" type="date" onChange={handleChangeDate} value = {date} placeholder="createdAt" required/>
+        <textarea className="form__text" name="notes" value={note} onChange={handleChangeNote} rows="4" cols="50" placeholder="Add a note for your expense (optional)"></textarea>
+        <div>
+          <input className="form__submit" type="submit" value="Save Expense" />
+        </div>
       </form>
-      {props.expense && <button onClick={handleRemove}>remove</button>}
-    </div>
+      {props.expense && <button className="form__remove" onClick={handleRemove}>Remove Expense</button>}
+  </div>
   )
 }
 

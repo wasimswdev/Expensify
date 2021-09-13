@@ -1,0 +1,40 @@
+.box-layout{
+    align-items: center;
+    background: url('../../images/bg.jpg');
+    background-size: cover;
+    display: flex;
+    height:100vh;
+    justify-content: center;
+    width:100vw;
+}
+
+
+.box-layout__box{
+    text-align: center;
+    padding: 3.2rem 1.6rem;
+    background-color: fade-out($color:#fff, $amount: .15);
+    width:25rem;
+    border-radius: 3px;
+}
+
+.login-button{
+    font-size: 1.8rem;
+    display: inline-block;
+    font-weight: 300;
+    background: #1C88BF;
+    border:none;
+    line-height: 1;
+    text-decoration: none;
+    padding:1.2rem;
+    color: #fff;
+}
+
+.box-layout__header{
+    margin: 0 0 1.6rem 0;
+    line-height: 1;
+}
+
+
+.box-layout__para{
+    margin-bottom: 1.6rem;
+}
